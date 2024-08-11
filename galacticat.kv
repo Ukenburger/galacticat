@@ -1,0 +1,89 @@
+<StartWidget>
+    GridLayout:
+        size_hint: .98, .98
+        cols: 2
+        Label:
+            id: name_label
+            text: 'Name'
+            font_size: 32
+            color: 'black'
+        TextInput:
+            id: name_input
+            font_size: 32
+            halign: 'center'
+        Label:
+            id: birth_date_label
+            text: '[ref=selector]Birth Date[/ref]'
+            markup: True
+            font_size: 32
+            color: 'black'
+            on_ref_press: app.show_date_picker()
+        TextInput:
+            id: birth_date_input
+            font_size: 32
+            halign: 'center'
+            on_double_tap: app.show_date_picker()
+        Label:
+            id: birth_time_label
+            text: '[ref=selector]Birth Time[/ref]'
+            markup: True
+            font_size: 32
+            color: 'black'
+            on_ref_press: app.show_time_picker()
+        TextInput:
+            id: birth_time_input
+            font_size: 32
+            halign: 'center'
+            on_double_tap: app.show_time_picker()
+        Label:
+            id: country_label
+            text: 'Country'
+            font_size: 32
+            color: 'black'
+        MDTextField:
+            id: country_input
+            font_size: 32
+            halign: 'center'
+            on_text: app.text_suggestions_country(self, self.text)
+            hint_text: 'Type a country name'
+            helper_text: 'Type a country name'
+            helper_text_mode: 'on_focus'
+        Label:
+            id: state_label
+            text: 'State'
+            font_size: 32
+            color: 'black'
+        MDTextField:
+            id: state_input
+            font_size: 32
+            halign: 'center'
+            on_text: app.text_suggestions_state(self, self.text)
+            hint_text: 'Type a state name'
+            helper_text: 'Type a state name'
+            helper_text_mode: 'on_focus'
+        Label:
+            id: city_label
+            text: 'City'
+            font_size: 32
+            color: 'black'
+        MDTextField:
+            id: city_input
+            font_size: 32
+            halign: 'center'
+            on_text: app.text_suggestions_city(self, self.text)
+            hint_text: 'Type a city name'
+            helper_text: 'Type a city name'
+            helper_text_mode: 'on_focus'
+        Button:
+            id: make_chart_button
+            text: 'Make Chart'
+            font_size: 32
+            color: 'black'
+            on_press: app.generate_chart()
+
+<DatePickerWidget>
+    MDFloatLayout:
+        MDRaisedButton:
+            text: "Open date picker"
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            on_release: app.show_date_picker()
